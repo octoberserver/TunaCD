@@ -21,6 +21,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/tunacd:latest
           file: ./Dockerfile
           context: .
