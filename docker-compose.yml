@@ -1,6 +1,6 @@
 services:
   tunacd:
-    container_name: tunacd
+    container_name: tuna
     image: ghcr.io/octoberserver/tunacd:latest
     # image: tunacd:latest
     # ports:
@@ -10,7 +10,13 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`tuna.octsrv.org`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.http.services.web.loadbalancer.server.port=8080"
+      # - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.entrypoints=websecure"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - web
+    restart: unless-stopped
+networks:
+  web:
+    external: true
