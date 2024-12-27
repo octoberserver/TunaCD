@@ -16,4 +16,6 @@ RUN chmod +x /app/main
 COPY --from=builder /app/docker-compose /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 
+EXPOSE 8080
+
 CMD ["/app/main"]
