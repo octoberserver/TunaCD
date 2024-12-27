@@ -9,9 +9,9 @@ services:
       - AUTH_TOKEN=${HTTP_AUTH_TOKEN}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`tuna.octsrv.org`)"
-      # - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.http.routers.whoami.entrypoints=websecure"
+      - "traefik.http.routers.tuna.rule=Host(`tuna.octsrv.org`)"
+      - "traefik.http.routers.tuna.entrypoints=web"
+      - "traefik.http.routers.tuna.entrypoints=websecure"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
