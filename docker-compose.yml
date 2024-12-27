@@ -10,8 +10,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.tuna.rule=Host(`tuna.octsrv.org`)"
-      - "traefik.http.routers.tuna.entrypoints=web"
-      - "traefik.http.routers.tuna.entrypoints=websecure"
+      - "traefik.http.routers.tuna.entrypoints=web,websecure"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
