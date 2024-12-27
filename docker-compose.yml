@@ -11,5 +11,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`tuna.octsrv.org`)"
       - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.services.web.loadbalancer.server.port=8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
