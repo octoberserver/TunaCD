@@ -62,6 +62,15 @@ func deployHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	cmd = exec.Command("docker-compose", "-p", req.Name, "down")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err = cmd.Run()
+	if err != nil {
+		http.Error(w, "Failed to take down compose: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	cmd = exec.Command("docker-compose", "-p", req.Name, "-f", composeFilePath, "up", "-d")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
